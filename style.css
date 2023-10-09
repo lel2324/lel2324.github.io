@@ -3,6 +3,7 @@ body {
     color: rgb(45, 45, 45);
     padding: 10px;
     font-family: arial;
+    margin: auto;
 }
 #all-contents {
   max-width: 800px;
