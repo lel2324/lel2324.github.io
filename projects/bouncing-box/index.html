@@ -6,8 +6,8 @@
 	<script src="jquery.min.js"></script>
 	<style>
 		.box {
-			width: 70px;
-			height: 70px;
+			width: 50px;
+			height: 50px;
 			background-color: red;
 			font-size: 300%;
 			text-align: center;
@@ -19,7 +19,7 @@
 		}
 		.board{
 			height: 100vh;
-			background-color: yellow;
+			background-color: purple;
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -69,6 +69,7 @@
 			var speed = 10;
 			var positionY = 0;
 			var speedY = 10;
+			var randNum = Math.random() * boardWidth
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
@@ -102,6 +103,7 @@
 				changeBoxText(points = points + 1);
 				speed = speed * 1.2;
 				speedY = speedY * 1.2;
+				positionX, positionY = randNum
 			};
 		})();
 	</script>
