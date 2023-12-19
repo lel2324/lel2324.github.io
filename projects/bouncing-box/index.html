@@ -70,6 +70,8 @@
 			var positionY = 0;
 			var speedY = 10;
 			var randNum = Math.random() * boardWidth
+			
+			
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
@@ -100,10 +102,14 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
+				var randomNum = (Math.random() * 70) + 70
 				changeBoxText(points = points + 1);
 				speed = speed * 1.2;
 				speedY = speedY * 1.2;
 				positionX, positionY = randNum
+				
+				$(".box").css("width", randomNum)
+				$(".box").css("height", randomNum)
 			};
 		})();
 	</script>
