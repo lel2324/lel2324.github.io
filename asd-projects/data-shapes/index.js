@@ -66,7 +66,7 @@ dataShapes.push(shape)
 
   // TODO 4-a: add a function that handles the good display type
   function handleGood(color, shape, repeat){
-    setBackgroundWithObject(color, shape, repeat)
+    setBackgroundWithSimple(color, shape, repeat)
     animationDetails.displayType = 2
   }
 
