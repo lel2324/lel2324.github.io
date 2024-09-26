@@ -5,11 +5,11 @@ $(document).ready(function(){
 /////////////////
 
 // this section initializes some variables that will be used throughout the program
-var doubleMaxSpeed = 5;
-var maxCircles = 10;
+var doubleMaxSpeed = 100;
+var maxCircles = 100;
 var $board = $('#board');
-var boardWidth = $($board).width();
-var boardHeight = $($board).height();
+var boardWidth = 1400
+var boardHeight = 720
 var circles = [];
 var circleRadius = 10;
 
@@ -140,7 +140,7 @@ function bounceCircle(circle){
 
 // this redraws the circle's position on the screen
 function updateCircleOnScreen(circle){
-    maxCircles = 10;
+    maxCircles = 100;
 
     // these lines redraw the circle's position
     $(circle.id).css('left', circle.x);
