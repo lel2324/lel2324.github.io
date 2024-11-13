@@ -87,7 +87,6 @@ function update() {
 
   if (hasCollidedWithApple()) {
     handleAppleCollision();
-    
   }
 }
 
@@ -111,7 +110,7 @@ function checkForNewDirection(event) {
     snake.head.direction = "down";
   }
   // FILL IN THE REST
-  console.log(snake.head.direction);     // uncomment me!
+  //console.log(snake.head.direction);     // uncomment me!
 }
 
 
@@ -172,17 +171,18 @@ function hasHitWall() {
   */
 
 
-  if (snake.head.row == ROWS) {
+  if (snake.head.row === ROWS) {
     return true;
   }
-  else if (snake.head.row == ROWS) {
+  if (snake.head.column === COLUMNS) {
     return true;
   }
-  else if (snake.head.column == COLUMNS) {
+  if (snake.head.row === -1) {
     return true;
   }
-
-
+  if (snake.head.column === -1) {
+    return true;
+  }
   else {
   return false;
   }
@@ -196,9 +196,12 @@ function hasCollidedWithApple() {
  
   HINT: Both the apple and the snake's head are aware of their own row and column
   */
-
-
-  return false;
+  if(snake.head.row === apple.row && snake.head.column === apple.column){
+    return true
+  }
+  else{
+    return false
+  }
 }
 
 
