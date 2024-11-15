@@ -128,6 +128,19 @@ function moveSnake() {
 
   //Before moving the head, check for a new direction from the keyboard input
   checkForNewDirection();
+  for (var ting = snake.body.length - 1; ting > 0; ting-- ) {
+    var snakeSquare = snake.body[ting];
+    
+    var nextSnakeSquare = snake.body[ting + 1];
+    var nextRow = snake.body[ting - 1].row;
+    var nextColumn = snake.body[ting - 1].column;
+    var nextDirection = snake.body[ting - 1].direction;
+
+    snakeSquare.direction = nextDirection;
+    snakeSquare.row = nextRow;
+    snakeSquare.column = nextColumn;
+    repositionSquare(snakeSquare);
+}
  
   /*
   TODO 7: determine the next row and column for the snake's head
@@ -225,10 +238,26 @@ function handleAppleCollision() {
   If the tail is moving "down", place the next snakeSquare above it.
   etc...
   */
-  var row = 0;
-  var column = 0;
 
 
+  var row = snake.tail.row + 0;
+  var column = snake.tail.column + 0;
+
+  if(snake.tail.direction === "up"){
+    snake.tail.row += 2
+  }
+
+  if(snake.tail.direction === "down"){
+    snake.tail.row -= 2
+  }
+
+  if(snake.tail.direction === "left"){
+    snake.tail.column += 2
+  }
+
+  if(snake.tail.direction === "right"){
+    snake.tail.column -= 2
+  }
   // code to determine the row and column of the snakeSquare to add to the snake
 
 
@@ -245,9 +274,12 @@ function hasCollidedWithSnake() {
   head and each part of the snake's body also knows its own row and column.
  
   */
-
-
+  if(snake.head === snake.body){
+    return true
+  }
+else{
   return false;
+}
 }
 
 
