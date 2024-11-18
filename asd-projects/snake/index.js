@@ -274,12 +274,13 @@ function hasCollidedWithSnake() {
   head and each part of the snake's body also knows its own row and column.
  
   */
-  if(snake.head === snake.body){
-    return true
-  }
-else{
-  return false;
-}
+  for(var hmm = 1; hmm < snake.body.length; hmm++){
+    if(snake.head.row === snake.body[hmm].row && snake.head.column === snake.body[hmm].column){
+      return true
+    }
+    }
+  
+    return false;
 }
 
 
@@ -421,7 +422,11 @@ function getRandomAvailablePosition() {
     spaceIsAvailable to false so that a new position is generated.
     */
   }
-
+  for(var k = 0; k < snake.body.lenth; k++){
+    if(randomPosition.row === snake.body.row && randomPosition.column === snake.body.column){
+      spaceIsAvailable = false;
+    }
+  }
 
   return randomPosition;
 }
@@ -436,6 +441,10 @@ function calculateHighScore() {
     sessionStorage.setItem("highScore", score);
     highScore = score;
     alert("New High Score!");
+    
+  }
+  if (score < highScore){
+    alert("DO IT AGIAN!!!")
   }
 
 
