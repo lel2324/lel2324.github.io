@@ -12,6 +12,7 @@ var scoreElement = $("#score");
 var highScoreElement = $("#highScore");
 
 
+
 // TODO 4a: Create the snake, apple and score variables
 // Game Variables
 var snake = {};
@@ -446,8 +447,6 @@ function calculateHighScore() {
   if (score < highScore){
     alert("DO IT AGIAN!!!")
   }
-
-
   return highScore;
 }
 
