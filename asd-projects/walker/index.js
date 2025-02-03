@@ -1,7 +1,5 @@
 /* global $, sessionStorage */
-
 $(document).ready(runProgram); // wait for the HTML / CSS elements of the page to fully load, then execute runProgram()
-  
 function runProgram(){
   ////////////////////////////////////////////////////////////////////////////////
   //////////////////////////// SETUP /////////////////////////////////////////////
@@ -39,8 +37,8 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    repositionGameItem()
-    redrawGameItem()
+    repositionGameItem();
+    redrawGameItem();
   }
   
   /* 
@@ -48,7 +46,6 @@ function runProgram(){
   */
   function handleKeyDown(event) {
     if (event.which === KEY.ENTER){
-
       console.log("enter pressed")
     }
     if (event.which === KEY.LEFT){
@@ -67,20 +64,12 @@ function runProgram(){
       walker.speedY = 5;
       console.log("down arrow pressed")
     }
-  }
+
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
 
-  
-  function endGame() {
-    // stop the interval timer
-    clearInterval(interval);
-
-    // turn off event handlers
-    $(document).off();
-  }
   function repositionGameItem(){
     walker.positionX += walker.speedX;
     walker.positionY += walker.speedY;
@@ -90,5 +79,13 @@ function runProgram(){
     $("#walker").css("right", walker.positionX);
     $("#walker").css("top", walker.positionY);
     $("#walker").css("down", walker.positionY);
+  }
+  function endGame() {
+    // stop the interval timer
+    clearInterval(interval);
+
+    // turn off event handlers
+    $(document).off();
+  }
   }
 }
