@@ -37,34 +37,28 @@ function runProgram(){
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    repositionGameItem();
-    redrawGameItem();
+    repositionGameItem()
+    redrawGameItem()
   }
   
   /* 
   Called in response to events.
   */
   function handleKeyDown(event) {
-    if (event.which === KEY.ENTER){
-      console.log("enter pressed")
-    }
+    
     if (event.which === KEY.LEFT){
       walker.speedX = -5;
-      console.log("left arrow pressed")
     }
     if (event.which === KEY.UP){
       walker.speedY = -5;
-      console.log("up arrow pressed")
     }
     if (event.which === KEY.RIGHT){
       walker.speedX = 5;
-      console.log("right arrow pressed")
     }
     if (event.which === KEY.DOWN){
       walker.speedY = 5;
-      console.log("down arrow pressed")
     }
-
+  }
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -86,6 +80,5 @@ function runProgram(){
 
     // turn off event handlers
     $(document).off();
-  }
   }
 }
