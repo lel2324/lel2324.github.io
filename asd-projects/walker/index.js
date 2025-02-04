@@ -21,12 +21,26 @@ function runProgram(){
     speedX: 0,
     speedY: 0
   }
+  var WASD = {
+    W: 65,
+    A: 6,
+    S: 87,
+    D: 83
+  }
+  var ball = {
+    positionX: 390,
+    positionY: 0,
+    speedX: 0,
+    speedY: 0
+  }
   // Game Item Objects
 
 
   // one-time setup
   var interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
-  $(document).on('keydown', handleKeyDown);                           // change 'eventType' to the type of event you want to handle
+  $(document).on('keydown', handleKeyDown);
+  $(document).on('keyup', handleKeyUp)
+  // change 'eventType' to the type of event you want to handle
 
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
@@ -39,6 +53,7 @@ function runProgram(){
   function newFrame() {
     repositionGameItem()
     redrawGameItem()
+    wallCollision()
   }
   
   /* 
@@ -59,6 +74,36 @@ function runProgram(){
       walker.speedY = 5;
     }
   }
+function handleKeyUp(){
+  if (event.which === KEY.LEFT){
+    walker.speedX = 0;
+  }
+  if (event.which === KEY.UP){
+    walker.speedY = 0;
+  }
+  if (event.which === KEY.RIGHT){
+    walker.speedX = 0;
+  }
+  if (event.which === KEY.DOWN){
+    walker.speedY = 0;
+  }
+}
+var height = $('#board').css(height)
+var width = $('#board').css(width)
+function wallCollision(){
+  if (walker.positionX < 0){
+    walker.positionX = 0
+  } 
+  if (walker.positionX > 390){
+    walker.positionX = 390
+  }
+  if (walker.positionY < 0){
+    walker.positionY = 0
+  }
+  if (walker.positionY > 390){
+    walker.positionY = 390
+  }
+}
 
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
@@ -73,6 +118,10 @@ function runProgram(){
     $("#walker").css("right", walker.positionX);
     $("#walker").css("top", walker.positionY);
     $("#walker").css("down", walker.positionY);
+    $("#ball").css("left", ball.positionX);
+    $("#ball").css("right", ball.positionX);
+    $("#ball").css("top", ball.positionY);
+    $("#ball").css("down", ball.positionY);
   }
   function endGame() {
     // stop the interval timer
