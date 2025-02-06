@@ -22,10 +22,10 @@ function runProgram(){
     speedY: 0
   }
   var WASD = {
-    W: 65,
-    A: 6,
-    S: 87,
-    D: 83
+    W: 87,
+    A: 65,
+    S: 83,
+    D: 68
   }
   var ball = {
     positionX: 390,
@@ -73,6 +73,18 @@ function runProgram(){
     if (event.which === KEY.DOWN){
       walker.speedY = 5;
     }
+    if (event.which === WASD.A){
+      ball.speedX = -5;
+    }
+    if (event.which === WASD.W){
+      ball.speedY = -5;
+    }
+    if (event.which === WASD.D){
+      ball.speedX = 5;
+    }
+    if (event.which === WASD.S){
+      ball.speedY = 5;
+    }
   }
 function handleKeyUp(){
   if (event.which === KEY.LEFT){
@@ -86,6 +98,18 @@ function handleKeyUp(){
   }
   if (event.which === KEY.DOWN){
     walker.speedY = 0;
+  }
+  if (event.which === WASD.A){
+    ball.speedX = 0;
+  }
+  if (event.which === WASD.W){
+    ball.speedY = 0;
+  }
+  if (event.which === WASD.D){
+    ball.speedX = 0;
+  }
+  if (event.which === WASD.S){
+    ball.speedY = 0;
   }
 }
 var height = $('#board').css(height)
@@ -103,6 +127,18 @@ function wallCollision(){
   if (walker.positionY > 390){
     walker.positionY = 390
   }
+  if (ball.positionX < 0){
+    ball.positionX = 0
+  } 
+  if (ball.positionX > 390){
+    ball.positionX = 390
+  }
+  if (ball.positionY < 0){
+    ball.positionY = 0
+  }
+  if (ball.positionY > 390){
+    ball.positionY = 390
+  }
 }
 
   ////////////////////////////////////////////////////////////////////////////////
@@ -112,6 +148,8 @@ function wallCollision(){
   function repositionGameItem(){
     walker.positionX += walker.speedX;
     walker.positionY += walker.speedY;
+    ball.positionX += ball.speedX;
+    ball.positionY += ball.speedY;
   }
   function redrawGameItem(){
     $("#walker").css("left", walker.positionX);
